@@ -74,7 +74,7 @@ const Register = props => {
     const formData = new FormData();
     formData.append("selectedFile", selectedFile);
     try {
-      const response = axios({
+      axios({
         method: "post",
         url: "/api/uploadfile",
         data: formData,
@@ -92,7 +92,7 @@ const Register = props => {
   const [image, setImage] = useState("");
 
   const getImage = () => {
-    axios.get("/api/uploadfile").then((res) => {
+    axios.get("https://localhost:3000/api/uploadfile").then((res) => {
       let result = (res && res.data && res.data[0].file) || [];
       setImage(result[0]);
     });
@@ -180,7 +180,7 @@ const page=PageValue.value;
       apireqparam,
       apiresparam,
       process,
-      project   ,
+      project,
       page,
       panel,
       client,
@@ -305,9 +305,10 @@ const page=PageValue.value;
         <button onClick={transferValue}> Submit </button>
 
         </div>
-        <div className="App">
+
+        <div className="buttons">
       <img src={image} alt=""/>
-      <button onClick={getImage}>show</button>
+      <button onClick={getImage}>Image show</button>
     </div>
         
       </div>

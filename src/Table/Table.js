@@ -3,32 +3,34 @@ import Register from '../Register/Register.js';
 import jsonData from './data.json';
   
 function Table() {
-  const [studentData, setStudentData] = useState(jsonData);
+  const [submittedData, setSubmittedData] = useState(jsonData);
   
-  const tableRows = studentData.map((info) => {
+  const tableRows = submittedData.map((info) => {
     return (
       <tr>
         <td>{info.id}</td>
         <td>{info.name}</td>
         <td>{info.apireqparam}</td>
         <td>{info.apiresparam}</td>
+        <td>{info.process}</td>
         <td>{info.project}</td>
         <td>{info.page}</td>
         <td>{info.panel}</td>
         <td>{info.client}</td>
-        <td>{info.selector}</td>
         <td>{info.section}</td>
+        <td>{info.selector}</td>
+       
        
       </tr>
     );
   });
   
   const addRows = (data) => {
-    const totalStudents = studentData.length;
-    data.id = totalStudents + 1;
-    const updatedStudentData = [...studentData];
-    updatedStudentData.push(data);
-    setStudentData(updatedStudentData);
+    const totalSub = submittedData.length;
+    data.id = totalSub + 1;
+    const updatedSubData = [...submittedData];
+    updatedSubData.push(data);
+    setSubmittedData(updatedSubData);
   };
   
   return (
@@ -45,8 +47,8 @@ function Table() {
             <th>Page</th>
             <th>Panel</th>
             <th>Client</th>
-            <th>Selector</th>
             <th>Section</th>
+            <th>Selector</th>
             
           </tr>
         </thead>
